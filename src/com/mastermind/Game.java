@@ -27,11 +27,15 @@ public class Game {
         Color thirdGuessCode = code.getCode3();
         if(thirdGuessCode.equals(secretCode.getCode3())) {
             numBlacks++;
+        } else if (thirdGuessCode.equals(secretCode.getCode4())) {
+            numWhites++;
         }
 
         Color fourthGuessCode = code.getCode4();
         if(fourthGuessCode.equals(secretCode.getCode4())) {
             numBlacks++;
+        } else if (fourthGuessCode.equals(secretCode.getCode3())) {
+            numWhites++;
         }
 
         return new Feedback(numBlacks, numWhites);

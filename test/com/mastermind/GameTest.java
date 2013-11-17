@@ -22,6 +22,15 @@ public class GameTest {
         Feedback feedback = game.getFeedback(new Code(Color.green, Color.red, Color.blue, Color.yellow));
         assertEquals(new Integer(2), feedback.getNumberOfBlack());
         assertEquals(new Integer(2), feedback.getNumberOfWhite());
+    }
+
+    @Test
+    public void return2BlacksAnd2WhitesWhen2Unordered2CorrectOrder() {
+        Code secretCode = new Code(Color.red, Color.green, Color.blue, Color.yellow);
+        Game game = new Game(secretCode);
+        Feedback feedback = game.getFeedback(new Code(Color.red, Color.green, Color.yellow, Color.blue));
+        assertEquals(new Integer(2), feedback.getNumberOfBlack());
+        assertEquals(new Integer(2), feedback.getNumberOfWhite());
 
     }
 }
