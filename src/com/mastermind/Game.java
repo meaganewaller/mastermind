@@ -13,11 +13,15 @@ public class Game {
         Color firstGuessCode = code.getCode1();
         if (firstGuessCode.equals(secretCode.getCode1())) {
             numBlacks++;
+        } else if (firstGuessCode.equals(secretCode.getCode2())) {
+            numWhites++;
         }
 
         Color secondGuessCode = code.getCode2();
         if(secondGuessCode.equals(secretCode.getCode2())) {
             numBlacks++;
+        } else if (secondGuessCode.equals(secretCode.getCode1())) {
+            numWhites++;
         }
 
         Color thirdGuessCode = code.getCode3();

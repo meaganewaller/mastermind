@@ -14,4 +14,14 @@ public class GameTest {
         assertEquals(new Integer(4), feedback.getNumberOfBlack());
         assertEquals(new Integer(0), feedback.getNumberOfWhite());
     }
+
+    @Test
+    public void return2BlacksAnd2WhitesWhen2CorrectOrder2Unordered() {
+        Code secretCode = new Code(Color.red, Color.green, Color.blue, Color.yellow);
+        Game game = new Game(secretCode);
+        Feedback feedback = game.getFeedback(new Code(Color.green, Color.red, Color.blue, Color.yellow));
+        assertEquals(new Integer(2), feedback.getNumberOfBlack());
+        assertEquals(new Integer(2), feedback.getNumberOfWhite());
+
+    }
 }
