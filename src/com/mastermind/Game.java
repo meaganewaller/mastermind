@@ -1,6 +1,7 @@
 package com.mastermind;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import static com.mastermind.Board.getFeedback;
@@ -38,8 +39,8 @@ public class Game {
 
     public static void main(String[] args) {
         Game game = new Game();
-        game.setEncoder(new Player());
-        game.setDecoder(new AI());
+        game.setEncoder(new AI());
+        game.setDecoder(new Player());
         game.startGame(4);
     }
 
