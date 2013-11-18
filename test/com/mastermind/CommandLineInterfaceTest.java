@@ -25,4 +25,12 @@ public class CommandLineInterfaceTest {
         List<Color> expected = Arrays.asList(Color.green, Color.blue, Color.red, Color.yellow);
         assertEquals(expected, code);
     }
+
+    @Test
+    public void convertUserGuessWithBadInput() {
+        String userGuess = "y.r,b g";
+        List<Color> code = cli.convertInput(userGuess);
+        List<Color> expected = Arrays.asList(Color.yellow, Color.red, Color.blue, Color.green);
+        assertEquals(expected, code);
+    }
 }
