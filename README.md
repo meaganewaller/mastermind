@@ -9,6 +9,7 @@ as few turns as possible.
 You will receive feedback based on your guesses in the form of "X" and "O". 
 
 **X** means: You picked a correct color in the correct spot
+
 **O** means: You picked a correct color but in the wrong spot
 
 
