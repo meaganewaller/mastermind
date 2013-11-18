@@ -1,9 +1,10 @@
 package com.mastermind;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class AI implements Encoder, Decoder{
+public class AI implements Encoder {
 
     @Override
     public List<Color> chooseSecretCode(int size) {
@@ -15,44 +16,6 @@ public class AI implements Encoder, Decoder{
         return secretCode;
     }
 
-    @Override
-    public List<Color> promptGuess(List<Turn> turns, int size) {
-        if (turns.size() == 0) {
-            List<Color> firstGuess = Arrays.asList(
-                    Color.red, Color.red, Color.blue, Color.blue, Color.green, Color.green,
-                    Color.purple, Color.purple, Color.orange, Color.orange, Color.yellow, Color.yellow);
-            return firstGuess.subList(0, size);
-            } else {
-                List<List<Color>> possible = allConsistent(turns, size);
-                if (possible.size() > 0) {
-                    return possible.get(0);
-                }
-                return null;
-            }
-        }
-
-    public List<List<Color>> allConsistent(List<Turn> turns, int size) {
-        List<List<Color>> possible = theCodes(size);
-        for (Turn turn : turns) {
-            possible = filterByTurn(possible, turn);
-        }
-
-        return possible;
-    }
-
-    private List<List<Color>> filterByTurn(List<List<Color>> possible, Turn turn) {
-        List<List<Color>> consistent = new ArrayList<List<Color>>();
-        for (List<Color> code : possible) {
-            if (consistent(turn, code)) {
-                consistent.add(code);
-            }
-        }
-        return consistent;
-    }
-
-    private boolean consistent(Turn turn, List<Color> code) {
-        return Board.getFeedback(turn.getGuess(), code).equals(turn.getFeedback());
-    }
 
     public List<List<Color>> theCodes(int size) {
         Color[] colors = Color.values();
@@ -74,6 +37,5 @@ public class AI implements Encoder, Decoder{
 
         return codes;
     }
-
 
 }
