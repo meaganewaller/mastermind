@@ -9,6 +9,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public class ColorTest {
+
     @Test
     public void colorReturnsColors() {
         assertNotNull(Color.red);
@@ -30,8 +31,5 @@ public class ColorTest {
         colors.add(Color.orange);
         assertTrue(colors.contains(Color.random()));
     }
-
-
-
 
 }
