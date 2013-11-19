@@ -1,29 +1,29 @@
 package com.mastermind;
 
 public class Feedback {
-    private final Integer numberOfBlack;
-    private final Integer numberOfWhite;
+    private final Integer numberOfX;
+    private final Integer numberOfO;
 
-    public Feedback(int numberOfBlack, int numberOfWhite) {
-        this.numberOfBlack = numberOfBlack;
-        this.numberOfWhite = numberOfWhite;
+    public Feedback(int numberOfX, int numberOfO) {
+        this.numberOfX = numberOfX;
+        this.numberOfO = numberOfO;
     }
 
     @Override
     public boolean equals(Object object) {
         if (object instanceof Feedback) {
             Feedback that = (Feedback) object;
-            return that.numberOfBlack == this.numberOfBlack && that.numberOfWhite == this.numberOfWhite;
+            return that.numberOfX == this.numberOfX && that.numberOfO == this.numberOfO;
         }
 
         return false;
     }
 
-    public Integer getNumberOfBlack() {
-        return numberOfBlack;
+    public Integer getNumberOfX() {
+        return numberOfX;
     }
 
-    public Integer getNumberOfWhite() {
-        return numberOfWhite;
+    public Integer getNumberOfO() {
+        return numberOfO;
     }
 }

@@ -6,26 +6,26 @@ import java.util.Map;
 
 public class Board {
     public static Feedback getFeedback(List<Color> guess, List<Color> actual) {
-        int numOfBlacks = numberOfBlacks(guess, actual);
-        int numOfWhites = numberOfWhites(guess, actual);
-        return new Feedback(numOfBlacks, numOfWhites - numOfBlacks);
+        int numOfX = numberOfX(guess, actual);
+        int numOfO = numberOfO(guess, actual);
+        return new Feedback(numOfX, numOfO - numOfX);
     }
 
-    private static int numberOfBlacks(List<Color> userGuess, List<Color> actual) {
-        int blacks = 0;
+    private static int numberOfX(List<Color> userGuess, List<Color> actual) {
+        int x = 0;
         for (int index = 0; index < actual.size(); index++) {
             if (actual.get(index) == userGuess.get(index)) {
-                blacks++;
+                x++;
             }
         }
 
-        return blacks;
+        return x;
     }
 
-    private static int numberOfWhites(List<Color> userGuess, List<Color> actual) {
+    private static int numberOfO(List<Color> userGuess, List<Color> actual) {
         Map<Color, Integer> guessFrequency = count(userGuess);
         Map<Color, Integer> actualFrequency = count(actual);
-        return getWhites(guessFrequency, actualFrequency);
+        return getOs(guessFrequency, actualFrequency);
         }
 
     private static Map<Color,Integer> count(List<Color> userGuess) {
@@ -42,14 +42,14 @@ public class Board {
         return frequencies;
     }
 
-    private static int getWhites(Map<Color, Integer> guessFrequency, Map<Color, Integer> actualFrequency) {
-        int whites = 0;
+    private static int getOs(Map<Color, Integer> guessFrequency, Map<Color, Integer> actualFrequency) {
+        int o = 0;
         for (Color guessColor : guessFrequency.keySet()) {
             if (actualFrequency.containsKey(guessColor)) {
-                whites += Math.min(guessFrequency.get(guessColor), actualFrequency.get(guessColor));
+                o += Math.min(guessFrequency.get(guessColor), actualFrequency.get(guessColor));
             }
         }
-        return whites;
+        return o;
 
     }
 
