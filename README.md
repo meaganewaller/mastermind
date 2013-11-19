@@ -44,7 +44,16 @@ If the AI generates a random code of "rgby"
 
 2. cd into the directory: `cd mastermind`
 
-3. run the game: `java -jar PlayGame.jar` 
+3. compile the java files: `javac src/com/mastermind/*.java`
+
+4. cd to src directory: `cd src`
+
+5. jar the files: `jar cfm ../PlayGame.jar ../manifest.txt
+   com/mastermind/*.class`
+
+6. cd to main directory: `cd ..`
+
+7. play the game: `java -jar PlayGame.jar`
 
 
 
