@@ -1,20 +1,16 @@
 package com.mastermind;
 
 import java.util.ArrayList;
-
 import java.util.List;
 
 import static com.mastermind.Board.getFeedback;
 
 public class Game {
-
-    private CommandLineInterface cli = new CommandLineInterface();
     private Encoder encoder;
+    private CommandLineInterface cli;
     private Decoder decoder;
 
-
     public void startGame(int size) {
-
         List<Color> secretCode = encoder.chooseSecretCode(size);
         List<Turn> turns = new ArrayList<Turn>();
         cli.displayWelcomeMessage();
@@ -34,14 +30,7 @@ public class Game {
         }
         Turn last = turns.get(turns.size() - 1);
         Feedback feedback = last.getFeedback();
-        return feedback.getNumberOfBlack() != size;
-    }
-
-    public static void main(String[] args) {
-        Game game = new Game();
-        game.setEncoder(new AI());
-        game.setDecoder(new Player());
-        game.startGame(4);
+        return feedback.getNumberOfX() != size;
     }
 
     public void setEncoder(Encoder encoder) {
@@ -52,5 +41,8 @@ public class Game {
         this.decoder = decoder;
     }
 
+    public void setUserInterface(CommandLineInterface cli) {
+        this.cli = cli;
+    }
 
 }
