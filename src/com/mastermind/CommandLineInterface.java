@@ -27,6 +27,44 @@ public class CommandLineInterface {
         System.out.println("Good luck!\n");
     }
 
+    public static AI chooseEncoder() {
+        System.out.println("Who should be the encoder? (code maker) [h]uman or [a]i? ");
+        String userInput = null;
+        try {
+            BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+            userInput = in.readLine();
+            System.out.println(userInput);
+            if(userInput == "h") {
+                return new Player();
+            } else {
+                return new AI();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        return null;
+    }
+
+    public static AI chooseDecoder() {
+        System.out.println("Who should be the decoder? (code breaker) [h]uman or [a]i? ");
+        String userInput = null;
+        try {
+            BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+            userInput = in.readLine();
+            if(userInput == "h") {
+                return new Player();
+            } else {
+                return new AI();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
     public void showBoard(List<Turn> turns) {
         for (Turn turn : turns) {
             System.out.println(convertOutput(turn));

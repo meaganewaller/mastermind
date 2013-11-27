@@ -2,7 +2,7 @@ package com.mastermind;
 
 import java.util.List;
 
-public class Player implements Encoder, Decoder{
+public class Player extends AI implements Encoder, Decoder{
     private CommandLineInterface cli = new CommandLineInterface();
 
     @Override

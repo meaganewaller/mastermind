@@ -11,9 +11,9 @@ public class Game {
     private Decoder decoder;
 
     public void startGame(int size) {
+        cli.displayWelcomeMessage();
         List<Color> secretCode = encoder.chooseSecretCode(size);
         List<Turn> turns = new ArrayList<Turn>();
-        cli.displayWelcomeMessage();
         while(notSolved(turns, size)) {
             List<Color> userGuess = decoder.promptGuess(turns, size);
             Feedback feedback = getFeedback(userGuess, secretCode);
