@@ -63,11 +63,11 @@ public class CommandLineInterface {
 
     private String feedbackToString(Feedback feedback, int size) {
         String feedString = "";
-        int numOfBlacks = feedback.getNumberOfBlack();
-        int numOfWhites = feedback.getNumberOfWhite();
-        int numSpaces = size - (numOfBlacks + numOfWhites);
-        feedString += repeatString("X", numOfBlacks);
-        feedString += repeatString("O", numOfWhites);
+        int numOfX = feedback.getNumberOfX();
+        int numOfO = feedback.getNumberOfO();
+        int numSpaces = size - (numOfX + numOfO);
+        feedString += repeatString("X", numOfX);
+        feedString += repeatString("O", numOfO);
         feedString += repeatString(" ", numSpaces);
         return feedString;
     }

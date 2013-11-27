@@ -8,8 +8,6 @@ import java.util.List;
 import static org.junit.Assert.assertSame;
 
 public class BoardTest {
-
-
     @Test
     public void returns4XForFeedbackWhenCorrectCode() {
         List<Color> userGuess = Arrays.asList(Color.yellow, Color.blue, Color.orange, Color.green);

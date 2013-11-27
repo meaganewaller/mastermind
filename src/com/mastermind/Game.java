@@ -24,7 +24,7 @@ public class Game {
         System.out.println();
     }
 
-    private boolean notSolved(List<Turn> turns, int size) {
+    protected boolean notSolved(List<Turn> turns, int size) {
         if (turns.isEmpty()) {
             return true;
         }

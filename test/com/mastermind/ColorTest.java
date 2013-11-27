@@ -32,4 +32,5 @@ public class ColorTest {
         assertTrue(colors.contains(Color.random()));
     }
 
+
 }
