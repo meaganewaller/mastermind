@@ -21,7 +21,7 @@ public class CommandLineInterface {
         return convertInput(userInput);
     }
 
-    public static void displayWelcomeMessage() {
+    public void displayWelcomeMessage() {
         System.out.println("Welcome to Mastermind!");
         System.out.println("The code is made up from 4 colors, the initials of the colors are r, g, y, b, p, o (red, green, yellow, blue, purple, orange)");
         System.out.println("Good luck!\n");
@@ -118,5 +118,6 @@ public class CommandLineInterface {
         }
         return new String(chars);
     }
+
 
 }
