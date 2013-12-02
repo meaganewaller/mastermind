@@ -1,5 +1,6 @@
 package com.mastermind;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -9,40 +10,49 @@ import static junit.framework.Assert.assertSame;
 import static junit.framework.Assert.assertTrue;
 
 public class GameTest {
+    Game game = new Game();
+    MockDecoder decoder = new MockDecoder();
+    MockEncoder encoder = new MockEncoder();
+    MockCommandLineInterface cli = new MockCommandLineInterface();
+
+    @Before
+    public void setUp() {
+        game.setDecoder(decoder);
+        game.setEncoder(encoder);
+        game.setUserInterface(cli);
+    }
+
 
 
     @Test
     public void displaysWelcomeMessage() {
-        Game game = new Game();
-        MockDecoder decoder = new MockDecoder();
-        MockEncoder encoder = new MockEncoder();
         List<Color> sequenceOfColors = Arrays.asList(Color.blue, Color.green, Color.blue, Color.green);
         decoder.addGuess(sequenceOfColors);
         encoder.secretCode = sequenceOfColors;
-        MockCommandLineInterface cli = new MockCommandLineInterface();
-        game.setDecoder(decoder);
-        game.setEncoder(encoder);
-        game.setUserInterface(cli);
-
         game.startGame(sequenceOfColors.size());
-
         assertTrue(cli.welcomeMessageWasDisplayed());
     }
 
     @Test
     public void showsInitialBoard() {
-        Game game = new Game();
-        MockDecoder decoder = new MockDecoder();
-        MockEncoder encoder = new MockEncoder();
-        MockCommandLineInterface cli = new MockCommandLineInterface();
         List<Color> sequenceOfColors = Arrays.asList(Color.blue, Color.green, Color.blue, Color.green);
         decoder.addGuess(sequenceOfColors);
         encoder.secretCode = sequenceOfColors;
-        game.setDecoder(decoder);
-        game.setEncoder(encoder);
-        game.setUserInterface(cli);
         game.startGame(sequenceOfColors.size());
         assertSame(1, cli.numberOfTimesShowBoardDisplayed());
+    }
+
+    @Test
+    public void itsSolvedWhenTheGuessIsCorrect() {
+        List<Color> firstGuess = Arrays.asList(Color.red, Color.red, Color.red, Color.red);
+        List<Color> secondGuess = Arrays.asList(Color.purple, Color.red, Color.red, Color.blue);
+        List<Color> thirdGuess = Arrays.asList(Color.blue, Color.green, Color.blue, Color.green);
+        decoder.addGuess(firstGuess);
+        decoder.addGuess(secondGuess);
+        decoder.addGuess(thirdGuess);
+        encoder.secretCode = thirdGuess;
+        game.startGame(firstGuess.size());
+        // assertSame(3, cli.numberOfTimesShowBoardDisplayed());
     }
 
 
