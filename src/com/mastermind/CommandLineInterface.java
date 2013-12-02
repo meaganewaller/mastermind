@@ -29,7 +29,7 @@ public class CommandLineInterface {
 
     public static AI chooseEncoder() {
         System.out.println("Who should be the encoder? (code maker) [h]uman or [a]i? ");
-        String userInput = null;
+        String userInput;
         try {
             BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
             userInput = in.readLine();
