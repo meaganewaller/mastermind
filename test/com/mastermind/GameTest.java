@@ -55,6 +55,4 @@ public class GameTest {
         // assertSame(3, cli.numberOfTimesShowBoardDisplayed());
     }
 
-
-
 }

@@ -27,44 +27,6 @@ public class CommandLineInterface {
         System.out.println("Good luck!\n");
     }
 
-    public static AI chooseEncoder() {
-        System.out.println("Who should be the encoder? (code maker) [h]uman or [a]i? ");
-        String userInput;
-        try {
-            BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-            userInput = in.readLine();
-            System.out.println(userInput);
-            if(userInput == "h") {
-                return new Player();
-            } else {
-                return new AI();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-        return null;
-    }
-
-    public static AI chooseDecoder() {
-        System.out.println("Who should be the decoder? (code breaker) [h]uman or [a]i? ");
-        String userInput = null;
-        try {
-            BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-            userInput = in.readLine();
-            if(userInput == "h") {
-                return new Player();
-            } else {
-                return new AI();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-
-    }
-
     public void showBoard(List<Turn> turns) {
         for (Turn turn : turns) {
             System.out.println(convertOutput(turn));
@@ -91,7 +53,7 @@ public class CommandLineInterface {
         return String.format("%s%n|%s|  |%s|", divider, guessString, feedbackString);
     }
 
-    private String repeatString(String input, int times) {
+    String repeatString(String input, int times) {
         String string = "";
         for (int index = 0; index < times; index++) {
             string += input;
@@ -99,7 +61,7 @@ public class CommandLineInterface {
         return string;
     }
 
-    private String feedbackToString(Feedback feedback, int size) {
+    String feedbackToString(Feedback feedback, int size) {
         String feedString = "";
         int numOfX = feedback.getNumberOfX();
         int numOfO = feedback.getNumberOfO();
@@ -110,14 +72,12 @@ public class CommandLineInterface {
         return feedString;
     }
 
-    private String guessToString(List<Color> guess) {
-        int size = guess.size();
-        char[] chars = new char[size];
-        for (int index = 0; index < size; index++) {
-            chars[index] = guess.get(index).c;
-        }
-        return new String(chars);
+    String guessToString(List<Color> guess) {
+       int size = guess.size();
+       char[] chars = new char[size];
+       for (int index = 0; index < size; index++) {
+           chars[index] = guess.get(index).c;
+       }
+       return new String(chars);
     }
-
-
 }
