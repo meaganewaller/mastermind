@@ -3,13 +3,15 @@ package com.mastermind;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CommandLineInterface {
+PrintStream output = System.out;
 
     public List<Color> promptCode() {
-        System.out.println("Enter Guess: ");
+        output.println("Enter Guess: ");
         String userInput = null;
         try {
             BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
@@ -22,14 +24,14 @@ public class CommandLineInterface {
     }
 
     public void displayWelcomeMessage() {
-        System.out.println("Welcome to Mastermind!");
-        System.out.println("The code is made up from 4 colors, the initials of the colors are r, g, y, b, p, o (red, green, yellow, blue, purple, orange)");
-        System.out.println("Good luck!\n");
+        output.println("Welcome to Mastermind!");
+        output.println("The code is made up from 4 colors, the initials of the colors are r, g, y, b, p, o (red, green, yellow, blue, purple, orange)");
+        output.println("Good luck!\n");
     }
 
     public void showBoard(List<Turn> turns) {
         for (Turn turn : turns) {
-            System.out.println(convertOutput(turn));
+            output.println(convertOutput(turn));
         }
     }
 
