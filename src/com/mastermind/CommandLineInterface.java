@@ -10,6 +10,10 @@ import java.util.List;
 public class CommandLineInterface {
 PrintStream output = System.out;
 
+    public void setOutput(PrintStream output) {
+        this.output = output;
+    }
+
     public List<Color> promptCode() {
         output.println("Enter Guess: ");
         String userInput = null;
@@ -82,4 +86,5 @@ PrintStream output = System.out;
        }
        return new String(chars);
     }
+
 }

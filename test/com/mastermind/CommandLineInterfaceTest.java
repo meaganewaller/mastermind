@@ -1,15 +1,20 @@
 package com.mastermind;
 
+import org.junit.Before;
 import org.junit.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertTrue;
+import static org.junit.Assert.assertSame;
 
 public class CommandLineInterfaceTest {
     private CommandLineInterface cli = new CommandLineInterface();
-
     @Test
     public void itConvertsInputToProperColor() {
         String userGuess = "y, r, b, g";
@@ -48,11 +53,18 @@ public class CommandLineInterfaceTest {
 
     @Test
     public void itDisplaysAWelcomeMessage() {
-        // Mock System.out and assert that it displays three lines for the welcome message
+
+        MockOutputStream out = new MockOutputStream();
+        PrintStream printStream = new PrintStream(out);
+        cli.setOutput(printStream);
+        cli.displayWelcomeMessage();
+        assertEquals("", out.getStringHistory());
     }
+
 
     @Test
     public void itPromptsForTheUsersGuess() {
+
         // Mock System.out and assert that it displays "Enter Guess: "
     }
 
