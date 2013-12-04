@@ -1,9 +1,9 @@
 package com.mastermind;
 
-import org.junit.Before;
 import org.junit.Test;
 
-import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,6 +11,7 @@ import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertSame;
 
 public class CommandLineInterfaceTest {
@@ -53,12 +54,12 @@ public class CommandLineInterfaceTest {
 
     @Test
     public void itDisplaysAWelcomeMessage() {
-
-        MockOutputStream out = new MockOutputStream();
-        PrintStream printStream = new PrintStream(out);
+        OutputStream outputStream = new MockOutputStream();
+        MockPrintStream printStream = new MockPrintStream(outputStream);
+        printStream.setStringHistory(new ArrayList<String>());
         cli.setOutput(printStream);
         cli.displayWelcomeMessage();
-        assertEquals("", out.getStringHistory());
+        assertEquals("[Welcome to Mastermind!, The code is made up from 4 colors, the initials of the colors are r, g, y, b, p, o (red, green, yellow, blue, purple, orange), Good luck!\n]", printStream.getStringHistory().toString());
     }
 
 

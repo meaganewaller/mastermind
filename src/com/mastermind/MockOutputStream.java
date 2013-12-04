@@ -2,6 +2,7 @@ package com.mastermind;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 public class MockOutputStream extends OutputStream {
@@ -17,6 +18,8 @@ public class MockOutputStream extends OutputStream {
 
     public ArrayList<String> getStringHistory() {
         System.out.println("hi");
+        System.out.println(PrintStream.class);
         return stringHistory;
+
     }
 }
