@@ -13,6 +13,8 @@ public class Player extends AI implements Encoder, Decoder{
     @Override
     public List<Color> promptGuess(List<Turn> turns, int size) {
         cli.showBoard(turns);
+        cli.promptForGuess();
         return cli.promptCode();
+
     }
 }
