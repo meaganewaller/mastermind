@@ -16,13 +16,6 @@ public class MockCommandLineInterface extends CommandLineInterface {
         timesShowBoardDisplayed++;
     }
 
-    /* @Override
-    public String readLine() {
-        return some output
-    } */
-
-
-
     public boolean welcomeMessageWasDisplayed() {
         return this.displayWelcomeMessageWasCalled;
     }
