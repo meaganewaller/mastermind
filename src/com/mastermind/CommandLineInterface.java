@@ -1,29 +1,37 @@
 package com.mastermind;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CommandLineInterface {
 PrintStream output = System.out;
+InputStream input = System.in;
+String userInput = null;
 
     public void setOutput(PrintStream output) {
         this.output = output;
     }
 
+    public void setInput(InputStream input) {
+        this.input = input;
+    }
+
+    public void setUserInput(String userInput) {
+        this.userInput = userInput;
+    }
+
+    public void promptForGuess() {
+        output.print("Enter Your Guess: ");
+    }
+
     public List<Color> promptCode() {
-        output.println("Enter Guess: ");
-        String userInput = null;
-        try {
-            BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-            userInput = in.readLine();
+       try {
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(input));
+            userInput = bufferedReader.readLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return convertInput(userInput);
     }
 
@@ -86,5 +94,4 @@ PrintStream output = System.out;
        }
        return new String(chars);
     }
-
 }
