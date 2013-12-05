@@ -3,6 +3,7 @@ package com.mastermind;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -64,20 +65,13 @@ public class CommandLineInterfaceTest {
 
 
     @Test
-    public void itPromptsForTheUsersGuess() {
-
-        // Mock System.out and assert that it displays "Enter Guess: "
-    }
-
-    @Test
-    public void itGetsAUsersGuess() {
-        // Mock System.in and readLine to ensure that it gets a user's guess
-    }
-
-    @Test
-    public void itConvertsFeedbackToString() {
-        // Mock feedback to pass into the CLI
-        // Assert that it displays proper string for given feedback
+    public void promptsForUsersGuess() {
+        OutputStream outputStream = new MockOutputStream();
+        MockPrintStream printStream = new MockPrintStream(outputStream);
+        printStream.setStringHistory(new ArrayList<String>());
+        cli.setOutput(printStream);
+        cli.promptForGuess();
+        assertEquals("[Enter Your Guess: ]", printStream.getStringHistory().toString());
     }
 
     @Test
