@@ -7,10 +7,10 @@ import java.io.Reader;
 import java.util.ArrayList;
 
 public class MockBufferedReader extends BufferedReader {
-    public ArrayList<String> stringHistory;
-
-    public void setStringHistory(ArrayList<String> stringHistory) {
-        this.stringHistory = stringHistory;
+    public ArrayList<String> inputHistory;
+    
+    public void setInputHistory(ArrayList<String> inputHistory) {
+    	this.inputHistory = inputHistory;
     }
 
     public MockBufferedReader(Reader in, int sz) {
@@ -23,10 +23,10 @@ public class MockBufferedReader extends BufferedReader {
 
     @Override
     public String readLine() throws IOException {
-    	return stringHistory.get(1);
+    	return inputHistory.get(inputHistory.size()-1);
     }
 
-    public ArrayList<String> getStringHistory() {
-        return stringHistory;
+    public ArrayList<String> getInputHistory() {
+    	return inputHistory;
     }
 }

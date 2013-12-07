@@ -65,17 +65,18 @@ public class CommandLineInterfaceTest {
         printStream.setStringHistory(new ArrayList<String>());
         cli.setOutput(printStream);
         cli.promptForGuess();
-        assertEquals("[Enter Your Guess: ]", printStream.getStringHistory().toString());
+        assertEquals("Enter Your Guess: ", printStream.lastOutput());
     }
 
     @Test
     public void getsCodeFromUser() throws IOException {
         MockBufferedReader bufferedReader = new MockBufferedReader(new InputStreamReader(cli.input));
         cli.setBufferedReader(bufferedReader);
-        bufferedReader.setStringHistory(new ArrayList<String>());
-        cli.setUserInput("rrrr");
+        assertSame(cli.bufferedReader, bufferedReader);
+        bufferedReader.setInputHistory(new ArrayList<String>(Arrays.asList("rrrr")));
         cli.promptCode();
-        assertEquals("", bufferedReader.readLine());
+        assertEquals("rrrr", bufferedReader.readLine());
+
     }
 
     @Test

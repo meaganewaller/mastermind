@@ -8,7 +8,6 @@ public class CommandLineInterface {
 PrintStream output = System.out;
 InputStream input = System.in;
 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(input));
-String userInput = null;
 
     public void setOutput(PrintStream output) {
         this.output = output;
@@ -16,10 +15,6 @@ String userInput = null;
 
     public void setInput(InputStream input) {
         this.input = input;
-    }
-
-    public void setUserInput(String userInput) {
-        this.userInput = userInput;
     }
 
     public void setBufferedReader(BufferedReader bufferedReader) {
@@ -31,8 +26,9 @@ String userInput = null;
     }
 
     public String promptCode() {
+    	String userInput = null;
        try {
-           userInput = bufferedReader.readLine();
+    	   userInput = bufferedReader.readLine();
         } catch (IOException e) {
             e.printStackTrace();
         }

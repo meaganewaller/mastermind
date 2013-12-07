@@ -32,5 +32,9 @@ public class MockPrintStream extends PrintStream {
     public ArrayList<String> getStringHistory() {
         return stringHistory;
     }
+    
+    public String lastOutput() {
+    	return stringHistory.get(stringHistory.size()-1);
+    }
 
 }
