@@ -7,7 +7,7 @@ import java.util.List;
 public class CommandLineInterface {
 PrintStream output = System.out;
 InputStream input = System.in;
-String userInput = null;
+BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(input));
 
     public void setOutput(PrintStream output) {
         this.output = output;
@@ -17,22 +17,22 @@ String userInput = null;
         this.input = input;
     }
 
-    public void setUserInput(String userInput) {
-        this.userInput = userInput;
+    public void setBufferedReader(BufferedReader bufferedReader) {
+        this.bufferedReader = bufferedReader;
     }
 
     public void promptForGuess() {
         output.print("Enter Your Guess: ");
     }
 
-    public List<Color> promptCode() {
+    public String promptCode() {
+    	String userInput = null;
        try {
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(input));
-            userInput = bufferedReader.readLine();
+    	   userInput = bufferedReader.readLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return convertInput(userInput);
+        return userInput;
     }
 
     public void displayWelcomeMessage() {

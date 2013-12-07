@@ -1,19 +1,14 @@
 package com.mastermind;
 
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.PrintStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertTrue;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertSame;
 
 public class CommandLineInterfaceTest {
     private CommandLineInterface cli = new CommandLineInterface();
@@ -63,7 +58,6 @@ public class CommandLineInterfaceTest {
         assertEquals("[Welcome to Mastermind!, The code is made up from 4 colors, the initials of the colors are r, g, y, b, p, o (red, green, yellow, blue, purple, orange), Good luck!\n]", printStream.getStringHistory().toString());
     }
 
-
     @Test
     public void promptsForUsersGuess() {
         OutputStream outputStream = new MockOutputStream();
@@ -71,7 +65,18 @@ public class CommandLineInterfaceTest {
         printStream.setStringHistory(new ArrayList<String>());
         cli.setOutput(printStream);
         cli.promptForGuess();
-        assertEquals("[Enter Your Guess: ]", printStream.getStringHistory().toString());
+        assertEquals("Enter Your Guess: ", printStream.lastOutput());
+    }
+
+    @Test
+    public void getsCodeFromUser() throws IOException {
+        MockBufferedReader bufferedReader = new MockBufferedReader(new InputStreamReader(cli.input));
+        cli.setBufferedReader(bufferedReader);
+        assertSame(cli.bufferedReader, bufferedReader);
+        bufferedReader.setInputHistory(new ArrayList<String>(Arrays.asList("rrrr")));
+        cli.promptCode();
+        assertEquals("rrrr", bufferedReader.readLine());
+
     }
 
     @Test
