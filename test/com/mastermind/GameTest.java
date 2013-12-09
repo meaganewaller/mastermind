@@ -22,14 +22,12 @@ public class GameTest {
         game.setUserInterface(cli);
     }
 
-
-
     @Test
     public void displaysWelcomeMessage() {
         List<Color> sequenceOfColors = Arrays.asList(Color.blue, Color.green, Color.blue, Color.green);
         decoder.addGuess(sequenceOfColors);
         encoder.secretCode = sequenceOfColors;
-        game.startGame(sequenceOfColors.size());
+        game.gameSetUp();
         assertTrue(cli.welcomeMessageWasDisplayed());
     }
 
@@ -41,18 +39,13 @@ public class GameTest {
         game.startGame(sequenceOfColors.size());
         assertSame(1, cli.numberOfTimesShowBoardDisplayed());
     }
-
+    
     @Test
-    public void itsSolvedWhenTheGuessIsCorrect() {
-        List<Color> firstGuess = Arrays.asList(Color.red, Color.red, Color.red, Color.red);
-        List<Color> secondGuess = Arrays.asList(Color.purple, Color.red, Color.red, Color.blue);
-        List<Color> thirdGuess = Arrays.asList(Color.blue, Color.green, Color.blue, Color.green);
-        decoder.addGuess(firstGuess);
-        decoder.addGuess(secondGuess);
-        decoder.addGuess(thirdGuess);
-        encoder.secretCode = thirdGuess;
-        game.startGame(firstGuess.size());
-        // assertSame(3, cli.numberOfTimesShowBoardDisplayed());
+    public void canSetAsAIAsEncoder() {
+    	MockCommandLineInterface cli = new MockCommandLineInterface();
+    	cli.setInput("n");
+    	game.setCodeMaker();
+    	assertSame("", game.getEncoder());
     }
 
 }

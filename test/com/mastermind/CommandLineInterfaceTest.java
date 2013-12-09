@@ -78,6 +78,15 @@ public class CommandLineInterfaceTest {
     }
     
     @Test
+    public void getsCodebreakerFromUser() throws IOException {
+    	MockBufferedReader bufferedReader = new MockBufferedReader(new InputStreamReader(cli.input));
+    	cli.setBufferedReader(bufferedReader);
+    	bufferedReader.setInputHistory(new ArrayList<String>(Arrays.asList("h")));
+    	cli.promptPlayers();
+    	assertEquals("h", bufferedReader.readLine());
+    }
+    
+    @Test
     public void showsTheBoard() throws IOException {
     	OutputStream outputStream = new MockOutputStream();
     	MockPrintStream printStream = new MockPrintStream(outputStream);
@@ -109,6 +118,4 @@ public class CommandLineInterfaceTest {
         String expected = "XXXX";
         assertEquals(expected, actual);
     }
-
-
 }

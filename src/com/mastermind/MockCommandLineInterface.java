@@ -30,6 +30,11 @@ public class MockCommandLineInterface extends CommandLineInterface {
     public void promptForGuess() {
     }
     
+    @Override 
+    public String promptPlayers() {
+    	return input;
+    }
+    
     public boolean welcomeMessageWasDisplayed() {
         return this.displayWelcomeMessageWasCalled;
     }

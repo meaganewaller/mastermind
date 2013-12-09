@@ -11,6 +11,7 @@ public class Player extends AI implements Encoder, Decoder{
 
     @Override
     public List<Color> chooseSecretCode(int size) {
+    	cli.promptForGuess();
         String secretCode = cli.promptCode();
         return cli.convertInput(secretCode);
     }

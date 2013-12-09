@@ -18,7 +18,25 @@ BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(input))
     }
 
     public void promptForGuess() {
-        output.print("Enter Your Guess: ");
+        output.print("Enter Your Code: ");
+    }
+    
+    public void pickCodeBreaker() {
+    	output.print("Do you want to be codebreaker? y/n");
+    }
+    
+    public void pickCodeMaker() {
+    	output.print("Do you want to be codemaker? y/n");
+    }
+    
+    public String promptPlayers() {
+    	String player = null;
+    	try {
+    		player = bufferedReader.readLine();
+    	} catch (IOException e) {
+    		e.printStackTrace();
+    	}
+    	return player;
     }
 
     public String promptCode() {
