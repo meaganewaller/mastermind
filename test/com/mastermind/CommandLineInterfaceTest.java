@@ -72,10 +72,25 @@ public class CommandLineInterfaceTest {
     public void getsCodeFromUser() throws IOException {
         MockBufferedReader bufferedReader = new MockBufferedReader(new InputStreamReader(cli.input));
         cli.setBufferedReader(bufferedReader);
-        assertSame(cli.bufferedReader, bufferedReader);
         bufferedReader.setInputHistory(new ArrayList<String>(Arrays.asList("rrrr")));
         cli.promptCode();
         assertEquals("rrrr", bufferedReader.readLine());
+
+    }
+    
+    @Test
+    public void showsTheBoard() throws IOException {
+    	OutputStream outputStream = new MockOutputStream();
+    	MockPrintStream printStream = new MockPrintStream(outputStream);
+    	printStream.setStringHistory(new ArrayList<String>());
+    	cli.setOutput(printStream);
+    	List<Color> guess = Arrays.asList(Color.red, Color.red, Color.red, Color.red);
+    	MockFeedback feedback = new MockFeedback(1,1);
+    	MockTurn turn = new MockTurn(guess, feedback);
+    	List<Turn> turns = new ArrayList<Turn>();
+    	turns.add(turn);
+    	cli.showBoard(turns);
+    	assertEquals("--------------\n|rrrr|  |XO  |", printStream.lastOutput());
 
     }
 
