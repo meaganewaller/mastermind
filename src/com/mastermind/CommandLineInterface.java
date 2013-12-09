@@ -13,10 +13,6 @@ BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(input))
         this.output = output;
     }
 
-    public void setInput(InputStream input) {
-        this.input = input;
-    }
-
     public void setBufferedReader(BufferedReader bufferedReader) {
         this.bufferedReader = bufferedReader;
     }

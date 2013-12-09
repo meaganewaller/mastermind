@@ -10,23 +10,11 @@ public class MockFeedback extends Feedback  {
 		this.numberOfO = numberOfO;
 	}
 	
-	public void setNumberOfX(int numberOfX) {
-		this.numberOfX = numberOfX;
-	}
-	
-	public void setNumberOfO(int numberOfO) {
-		this.numberOfO = numberOfO;
-	}
-	
 	public Integer getNumberOfX() {
-		return 1;
+		return numberOfX;
 	}
 	
 	public Integer getNumberOfO() {
-		return 1;
+		return numberOfO;
 	}
-	
-	
-	
-
 }

@@ -8,6 +8,7 @@ import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotSame;
+import static org.junit.Assert.assertNull;
 
 public class AITest {
     private AI ai = new AI();
@@ -18,7 +19,8 @@ public class AITest {
         assertEquals(4, secretCode.size());
     }
 
-    @Test // this fails sometimes because idk how to test randomness.
+    @SuppressWarnings("deprecation")
+	@Test // this fails sometimes because idk how to test randomness.
     public void generatesARandomCode() {
         List<Color> secretCode =  ai.chooseSecretCode(4);
         assertNotSame(secretCode.get(0), secretCode.get(1));
@@ -78,4 +80,5 @@ public class AITest {
         List<Color> expected = Arrays.asList(Color.yellow, Color.yellow, Color.yellow, Color.red);
         assertEquals(expected, secondGuess);
     }
+    
 }

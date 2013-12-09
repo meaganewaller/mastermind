@@ -11,6 +11,17 @@ public class Game {
     private Decoder decoder;
 
     public void startGame(int size) {
+        /* Start game:
+        Displays the welcome message
+        Has the encoder choose their secret code
+        Initializes turns
+        while the code isn't solved
+            prompts the decoder for their guess
+            gets the feedback based on the user guess
+            adds a new turn with the user guess and the feedback
+            adds a turn to turns
+        once the game is solved it shows the board with all of its turns
+         */
         cli.displayWelcomeMessage();
         List<Color> secretCode = encoder.chooseSecretCode(size);
         List<Turn> turns = new ArrayList<Turn>();
@@ -21,7 +32,6 @@ public class Game {
             turns.add(turn);
         }
         cli.showBoard(turns);
-        System.out.println();
     }
 
     protected boolean notSolved(List<Turn> turns, int size) {

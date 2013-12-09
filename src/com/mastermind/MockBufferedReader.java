@@ -26,7 +26,4 @@ public class MockBufferedReader extends BufferedReader {
     	return inputHistory.get(inputHistory.size()-1);
     }
 
-    public ArrayList<String> getInputHistory() {
-    	return inputHistory;
-    }
 }

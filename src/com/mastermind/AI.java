@@ -32,7 +32,6 @@ public class AI implements Encoder, Decoder{
         }
     }
 
-    // filters to the remaining possible secret code combos
     public List<List<Color>> remainingCodes(List<Turn> turns, int size) {
         List<List<Color>> possible = allCodes(size);
         for (Turn turn: turns) {

@@ -3,8 +3,8 @@ package com.mastermind;
 import java.util.List;
 
 public class Turn {
-    private List<Color> guess;
-    private Feedback feedback;
+    public List<Color> guess;
+    public Feedback feedback;
 
     public Turn(List<Color> guess, Feedback feedback) {
         this.guess = guess;

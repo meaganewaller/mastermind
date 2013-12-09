@@ -25,10 +25,6 @@ public class MockPrintStream extends PrintStream {
         stringHistory.add(message);
     }
 
-    public void write(String message) {
-        stringHistory.add(message);
-    }
-
     public ArrayList<String> getStringHistory() {
         return stringHistory;
     }

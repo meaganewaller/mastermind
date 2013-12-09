@@ -5,6 +5,11 @@ import java.util.List;
 public class MockCommandLineInterface extends CommandLineInterface {
     private boolean displayWelcomeMessageWasCalled = false;
     private Integer timesShowBoardDisplayed = 0;
+	public String input;
+	
+	public void setInput(String input) {
+		this.input = input;
+	}
 
     @Override
     public void displayWelcomeMessage() {
@@ -15,7 +20,16 @@ public class MockCommandLineInterface extends CommandLineInterface {
     public void showBoard(List<Turn> turns) {
         timesShowBoardDisplayed++;
     }
-
+    
+    @Override
+    public String promptCode() {
+    	return input;
+    }
+    
+    @Override
+    public void promptForGuess() {
+    }
+    
     public boolean welcomeMessageWasDisplayed() {
         return this.displayWelcomeMessageWasCalled;
     }

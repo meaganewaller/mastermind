@@ -75,7 +75,6 @@ public class CommandLineInterfaceTest {
         bufferedReader.setInputHistory(new ArrayList<String>(Arrays.asList("rrrr")));
         cli.promptCode();
         assertEquals("rrrr", bufferedReader.readLine());
-
     }
     
     @Test
